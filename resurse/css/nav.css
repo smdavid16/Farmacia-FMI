@@ -50,7 +50,7 @@ ul.meniu  ul{
 ul.meniu>li:hover ul{
     display: block;
     position: absolute;
-    color: black;
+    color: var(--culoare-negru-nav);
     z-index: 1; /*orice valoare mai mare decât 0*/
 }
 
@@ -60,7 +60,7 @@ ul.meniu li{
     height:var(--inaltime-buton);
     background-color: var(--culoare-fundal);
     border: 1px solid var(--culoare-contur);
-    color: black;
+    color: var(--culoare-negru-nav);
     text-align: center;
     line-height: var(--inaltime-buton);
     /* text-decoration: none; */
@@ -72,7 +72,7 @@ ul.meniu li{
 
 ul.meniu li:hover{
     background-color: var(--culoare-contur);
-    color: #81DBC4; /*SCHIMBA*/
+    color: var(--culoare-accent-secundar); /*SCHIMBA*/
 }
 
 ul.meniu li a{
