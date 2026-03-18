@@ -1,0 +1,33 @@
+{
+  "name": "site-farmacia-fmi",
+  "version": "1.0.0",
+  "description": "farmacie",
+  "keywords": [
+    "farmacie",
+    "online",
+    "medicamente",
+    "suplimente",
+    "produse pentru sanatate"
+  ],
+  "homepage": "https://github.com/smdavid16/Farmacia-FMI#readme",
+  "bugs": {
+    "url": "https://github.com/smdavid16/Farmacia-FMI/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smdavid16/Farmacia-FMI.git"
+  },
+  "license": "ISC",
+  "author": "David Soisun",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  }
+}

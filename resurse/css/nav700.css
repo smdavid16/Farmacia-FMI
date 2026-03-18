@@ -1,0 +1,36 @@
+#hamburger{
+    display: block;
+}
+
+#hamburger > img{
+    height: 3em;
+    width: auto;
+}
+
+ul.meniu{
+    display:none;
+
+}
+
+#ch-menu:checked+ ul.meniu{
+    display: block;
+    position: absolute;
+    background-color: var(--culoare-contur);
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+ul.meniu li{
+    width: 100%;
+    text-align: center;
+    padding: 0.5em 0;
+}
+
+ul.meniu ul{
+    position: static;
+    background-color: var(--culoare-fundal);
+    width: 100%;
+    z-index: 1;
+}

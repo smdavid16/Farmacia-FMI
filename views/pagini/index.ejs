@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta name="description"
+    content="Farmacia FMI este farmacia cu cel mai mare stoc de medicamente, suplimente alimentare, produse pentru sanatate si ingrijire personala. Oferim o gama larga de produse, inclusiv paracetamol, ibuprofen, vitamine si multe altele. Viziteaza-ne pentru a gasi tot ce ai nevoie pentru sanatatea ta!"><meta charset="UTF-8">
+  <title>Farmacia FMI</title>
+  <meta name="keywords"
+    content="farmacie, farmacia FMI, medicamente, suplimente alimentare, paracetamol, ibuprofen, vitamine, produse pentru sanatate">
+    <%- include('../fragmente/head.ejs') %>
+</head>
+
+<body>
+    <%- include('../fragmente/header.ejs') %>
+ <main>
+    <div id="grid-pagina">
+            <section id="welcome" class="f-pattern-layout">
+                <hgroup class="f-header">
+                    <h2>Bine ați venit la Farmacia FMI</h2>
+                    <p class="subtitlu">Prezentarea farmaciei FMI</p>
+                    <p class="intro">Vă mulțumim că ne vizitați site-ul. Avem aici medicamente virtuale. Sănătate!
+                    </p>
+                </hgroup>
+            
+                <h3 class="f-subtitlu">Medicamente populare:</h3>
+                <ul class="intro-oferte-lista">
+                    <li>Paracetamol</li>
+                    <li>Ibuprofen</li>
+                    <li>Aspirina</li>
+                    <li>Metoclopramid</li>
+                    <li>No-Spa</li>
+                </ul>
+
+                <h3 class="f-subtitlu">Politica noastră (pe scurt):</h3>
+                <ul class="anunt intro lista-disclaimer">
+                    <li>Eliberăm medicamente OTC și cele reglementate de lege.</li>
+                    <li>Nu vă vom cere niciodată o rețetă falsă (sau una adevărată).</li>
+                    <li>Orice altceva care ar putea fi ilegal rămâne între noi.</li>
+                    <li>Noi doar vindem medicamente, nu ne interesează cum le folosiți.</li>
+                </ul>
+
+                <hr class="prajituri"/>
+
+                <div class="f-media-container">
+                    <div id="dv-prezentare">
+                        <figure>
+                            <picture>
+                                <source media="(max-width: 800px)" srcset="/resurse/imagini/paracetamol_mic.png" />
+                                <source media="(max-width: 1000px)" srcset="/resurse/imagini/paracetamol_mediu.webp" />
+                                <img src="/resurse/imagini/paracetamol_mare.jpg" alt="Cutie de Paracetamol" title="Paracetamol 500mg - Analgezic și antipiretic" style="width: 100%; border-radius: 8px;" />
+                            </picture>
+                            <figcaption>Paracetamolul este un medicament utilizat pe scară largă pentru ameliorarea durerilor ușoare și moderate.</figcaption>
+                        </figure>
+                    </div>
+
+                    <div id="container-video">
+                        <img class="farfurie" src="/resurse/imagini/acid_boric.webp" alt="farfurie" title="Acid Boric" style="width: 100%; border-radius: 8px;">
+                        <div id="clip-video" style="margin-top: 10px;">
+                            <video width="100%" playsinline autoplay loop muted style="border-radius: 8px; border: 2px solid var(--culoare-primara);">
+                                <source src="/resurse/video/farmacie_stock.mp4" type="video/mp4">
+                                <source src="/resurse/video/farma.mp4" type="video/ogv">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id = "diverse">
+                <section id="promotii">
+                    <h2>Promoții și oferte</h2>
+                    <article>
+                        <h3 class="titlu">Super oferte</h3>
+                        <p><b>Farmacia FMI</b> oferă <b>reduceri de <s>25%</s> <ins>50%</ins></b> pentru toate produsele din gama suplimentelor alimentare de la Secom!</p>
+                        <p>Oferta este valabilă doar în perioada 29.02.2026-31.02.2026 la sediile <abbr title="Farmacia FMI">FFMI</abbr>.</p>
+                        <p>In cazul in care cumparati 15 cutii de <b>medicamente</b> primiți si un card de fidelitate special pentru a economisi mai multi bani in viitor!</p>
+                    </article>
+                    <article>
+                        <h3>Ofertă pachet</h3>
+                        <p>Farmacia FMI oferă pachete cuprinzând:</p>
+                        <ol>
+                            <li><i lang="en">Prescription drugs</i></li>
+                            <li>Un set intreg de medicamente pentru dureri de burta</li>
+                            <li>Un medicament la alegere</li>
+                            <li>O <i>crema de fata</i></li>
+                            <li>Gratis: Un jeton pentru cosuri de cumparaturi</li>
+                            <li>Gratis: O intrarea in tombola farmaciei unde puteti castiga o masina!</li>
+                            <li>Gratis: Substante de risc si mare risc (nu ne reclamati la politie, ramane intre noi)</li>
+                        </ol>
+                        
+                    </article>
+                    <article>
+                        <h3>Oferta de 1 Martie</h3>
+                        <p>Noi punem culoarea in sarbatorile dumneavoastră cu medicamente colorate festiv!</p>
+                        <p>Chiar si cand trece primavara, noi avem medicamente albe si rosii ca martisoarele</p>
+                        <ol>
+                            <li>Cand uiti de 1 martie, ii cumperi o cutie de medicamente anti-stres si isi revine</li>
+                            <li>Daca nu cumperi un martisor de 1 martie, e nasol, deci vino la noi si cumpara martisoare medicinale!</li>
+                            <li>Nu incercati sa luati medicamente care nu va trebuie. Ati fost avertizati!</li>
+
+                        </ol>
+                        
+                    </article>
+                    <article>
+                        <h3>Medicamente pentru Paste</h3>
+                        <p>Stim cu totii ca veti manca mai mult decat e nevoie, asa ca avem medicamente care sa va ajute in aceasta privinta, ca altfel apareti la Observator cum ati chemat salvarea si v-au luat cu macaraua din casa sa va duca la Urgente</p>
+                        
+                    </article>
+                </section>
+                <section id="produse-recomandate">
+                <h2>Produse recomandate</h2>
+                <p>Acestea sunt cele mai recomandate produse de catre farmacistii nostri, pentru a va face bine, sau poate chiar mai bine decat atat!</p>
+            <figure id="fig1" class="fg-img">
+                <img src="/resurse/imagini/Forcapil-1.jpg" alt="briose" class = "resize" title = 'Forcapil'>
+                <figcaption>Forcapil</figcaption>
+            </figure>
+            <figure id="fig2" class="fg-img">
+            <img src="/resurse/imagini/colagen-1.png" alt="briose" class = "resize" title = 'Colagen'>
+            <figcaption>Colagen</figcaption>
+            </figure>
+            <figure  id="fig3" class="fg-img">
+            <img src="/resurse/imagini/vitamina_A-1.jpg" alt="briose" class = "resize" title = 'Vitamina A'>
+            <figcaption>Vitamina A</figcaption>
+            </figure>
+            <figure  id="fig4">
+            <img src="/resurse/imagini/Zinc-1.jpg" alt="briose" class = "resize" title = 'Zinc'>
+            <figcaption>Zinc</figcaption>
+            </figure>
+                </section>
+                <section id="index-intrebari">
+                <h2>Întrebări frecvente</h2>
+                <details>
+                    <summary>Pot returna sau schimba medicamentele achiziționate?</summary>
+                    <p>Conform legislației în vigoare (ordinul Ministerului Sănătății), medicamentele eliberate cu sau fără rețetă medicală nu pot fi returnate sau schimbate, din motive de siguranță și igienă publică.</p>
+                </details>
+                <details>
+                    <summary>Eliberați rețete compensate și gratuite?</summary>
+                    <p>Da! Farmacia noastră se află în contract cu Casa de Asigurări de Sănătate (CAS) și eliberăm medicamente pe bază de rețete compensate, gratuite, precum și rețete electronice.</p>
+                </details>
+                <details>
+                    <summary>Există diferențe de eficiență între medicamentul original și cel generic?</summary>
+                    <p>Nu. Medicamentele generice conțin exact aceeași substanță activă, în aceeași concentrație și formă farmaceutică precum medicamentul original inovator. Ele sunt la fel de sigure și eficiente, diferența fiind de obicei doar de producător și preț.</p>
+                </details>
+                <details>
+                    <summary>Oferiți consultanță pentru alegerea suplimentelor sau a dermo-cosmeticelor?</summary>
+                    <p>Absolut! Echipa noastră de farmaciști este pregătită să vă ofere sfaturi personalizate pentru rutina dumneavoastră de îngrijire a tenului, scheme de vitamine sau alegeri privind stilul de viață sănătos.</p>
+                </details>
+                </section>
+                <section id = "stoc">  
+                <h2>Stoc</h2>
+                <p>Stocul nostru este atât de mare încât nu știm exact ce avem, dar vă putem spune că avem tot ce aveți nevoie pentru a vă face bine, și poate chiar mai bine decât atât!</p>
+                <p>Dacă nu găsiți ceva în stoc, nu vă faceți griji, probabil că avem o cantitate nelimitată de acel produs, dar nu am apucat să îl adăugăm pe site încă.</p>
+                <label for="stoc_medicamente">Stoc medicamente</label>
+                <meter id="stoc_medicamente"  min="0" value="10" low="3" optimum="5" high = "10" max="10">20%</meter><br>
+
+                <label for="stoc_suplimente">Stoc suplimente alimentare</label>
+                <meter id="stoc_suplimente" min="0" value="3" low="3" optimum="5" high = "10" max="10" >40%</meter><br>
+
+                <label for="stoc_cosmetice">Stoc cosmetice</label>
+                <meter id="stoc_cosmetice" min="0" value="8" low="3" optimum="5" high = "10" max="10">80%</meter>
+
+                </section>
+            </section>
+            <section id="orar">
+                <h2>Orar</h2>
+                <div class = "table-container">
+                    <table id="tab-orar">
+                        <caption>Programul de functionare al farmaciei FMI</caption>
+                        <thead>
+
+                            <tr>
+                                <th>Perioadă</th>
+                                <th>Zi</th>
+                                <th>Ore de lucru</th>
+                                <th>Pauza de masa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="5" class = "roz">Zile<br/>Lucrătoare</td>
+                                <td>Luni</td>
+                                <td>8-20</td>
+                                <td>13:30-14</td>
+                            </tr>
+                            <tr>
+                                <td>Marti</td>
+                                <td>8-20</td>
+                                <td>13:30-14</td>
+                            </tr>
+                            <tr>
+                                
+                                <td>Miercuri</td>
+                                <td>8-20</td>
+                                <td>13:30-14</td>
+                            </tr>
+                            <tr>
+                                
+                                <td>Joi</td>
+                                <td>8-20</td>
+                                <td>13:30-14</td>
+                            </tr>
+                            <tr>                            
+                                <td>Vineri</td>
+                                <td>8-20</td>
+                                <td>13:30-14</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" class = "roz">Weekend</td>
+                                <td>Sambata</td>
+                                <td>9-16</td>
+                                <td>13:30-14</td>
+                            </tr>
+                            <tr>
+                                <td>Duminica</td>
+                                <td>inchis</td>
+                                <td>inchis</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4">Închis cu ocazia sărbătorilor legale, sau, când ne e mai lene așa.</td>
+                            </tr>
+                        </tfoot>
+                    </table> 
+                </div>
+                <p>
+                    <i class="fa-solid fa-skull-crossbones" style="color: red; font-size: 1.2em;"></i>
+                    <strong>Atentie!!!</strong>E posibil sa gasiti inchis daca ne cauta oamenii de la <b>DSP</b>
+                </p>
+            </section>
+            <section id="utilizatori-online" class="placeholder-box">
+                <h3>Utilizatori Online</h3>
+                <p>15 vizitatori disperați după paracetamol.</p>
+            </section>
+            <section id="date-utilizator" class="placeholder-box">
+                <h3>Date Utilizator</h3>
+                <p>IP: 192.168.1.1<br>Status: Sănătos (deocamdată)</p>
+            </section>
+            
+            <section id="anunturi">
+                <h2 class="fg-img">Anunțuri Farmacie</h2>
+                <p><time datetime="2026-02-20">20 februarie 2026</time> Vă reamintim să vă hidratați corespunzător în zilele caniculare! Avem oferte speciale la sărurile de rehidratare și apa termală.</p>
+                <p><time datetime="2026-01-05">5 ianuarie 2026</time> <strong>Serviciul de măsurare a tensiunii arteriale este din nou disponibil gratuit!</strong></p>
+                <p><time datetime="2025-03-15">15 martie 2025</time> <span>Am suplimentat stocurile de măști de protecție și geluri dezinfectante.</span></p>
+                <p><time datetime="2025-04-05">5 aprilie 2025</time> <span>Serviciul nostru de livrare la domiciliu pentru rețete compensate este acum activ.</span></p>
+                <p><time datetime="2024-07-05">5 iulie 2024</time> Am adăugat o nouă gamă de dermato-cosmetice cu protecție solară (SPF 50+) pe rafturile noastre.</p>
+                <p><time datetime="2023-09-15">15 septembrie 2023</time> Sezonul rece se apropie! Am adus noile stocuri de vaccin antigripal și suplimente pentru imunitate.</p>
+                <p><time datetime="2022-12-20">20 decembrie 2022</time> Programul nostru de sărbători a fost actualizat. Vom avea program scurt în zilele de Crăciun.</p>
+                <p><time datetime="2021-12-28">28 decembrie 2021</time> Am adăugat noi kituri de prim-ajutor auto în ofertă, perfecte pentru vacanța de iarnă.</p>
+                <p><time datetime="2020-01-01">1 ianuarie 2020</time> Un an nou plin de sănătate! Astăzi suntem închiși, dar vă așteptăm cu drag începând de mâine.</p>
+                <p><time datetime="2019-02-11">11 februarie 2019</time> Vitamina C, Zincul și Vitamina D3 sunt aliații voștri în acest sezon. Farmaciștii noștri vă stau la dispoziție pentru recomandări personalizate.</p>
+            </section>
+            <section id="calendar" class="placeholder-box">
+                <h3>Calendar Evenimente</h3>
+                <p>Tombola medicamentelor: Vineri, ora 20:00.</p>
+            </section>
+
+            <section id="date-server" class="placeholder-box">
+                <h3>Date Server</h3>
+                <p>Uptime: 99.9%<br>Server: FFMI-Main</p>
+            </section>
+            
+        </div>
+        <section id="oferta-fmi">
+            <h2>Oferta Specială: Integrala de reducere!</h2>
+            <p>La Farmacia FMI, calculăm reducerea de weekend folosind o integrală simplă:</p>
+            
+            <div class="formula-container">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" style="font-size: 1.5em;">
+                    <msubsup>
+                        <mo>&#x222B;</mo>
+                        <mn>0</mn>
+                        <mn>1</mn>
+                    </msubsup>
+                    <mi>x</mi>
+                    <mi>dx</mi>
+                </math>
+            </div>
+            
+            <p><strong>Oricine vine cu rezolvarea acestei integrale la farmacie va primi o reducere egala cu rezultatul ei</strong></p>
+        </section>
+        <section id="playlist-farmacie">
+            <h2>Sfaturi Farmaceutice Video</h2>
+            <div class="video-container">
+                <iframe 
+                    width="560" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/U6sN5pV0xKM?playlist=U6sN5pV0xKM,QhGxwX9yvRA&autoplay=1&mute=1&loop=1&controls=1" 
+                    title="Playlist Farmacia FMI" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+        
+        <section id="retete">
+            <h2>Retete</h2>
+            <p>Daca doriti sa va sintetizati singuri medicamentele <s>nu recomandam</s> urmariti tutorialele de mai jos . Mulțumim!</p>
+            <div class="container-iframe">
+                <div class="taburi-iframe">
+                <a href="https://www.youtube.com/embed/-XbQK6KPN8c" target="ifr-video">Farmacologie</a>
+                <a href="https://www.youtube.com/embed/Sk3aBIqQEPU" target="ifr-video" >Ce este paracetamol?</a>
+                <a href="https://www.youtube.com/embed/b0Ejuew2riA" target="ifr-video" >Sintetizarea aspirinei</a><br/>
+                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/b0Ejuew2riA" name="ifr-video" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            
+
+            </div>
+        </section>
+
+
+    <address>
+    Scrieti-mi aici <a href="mailto:contact@farmaciafmi.com"><i class="fa-solid fa-envelope"></i>David Soisun</a><br>
+    Telefon: <a href="tel:+40712345678" target="_blank"><i class="fa-solid fa-phone"></i>+40 712 345 678</a><br>
+    Whatsapp: <a href="https://wa.me/407123" target="_blank"><i class="fa-brands fa-whatsapp"></i>+40 712 345 678 </a><br>
+    Vizitati-ne la : <br>
+    <iframe src="https://www.google.com/maps?q=44.435556,26.09975&hl=ro&z=19&output=embed" width="400" height="250" allowfullscreen=""></iframe>
+    <p><small>Copyright &copy;2026 Soisun Mina-David, Data creării: <time datetime="2026-03-02">2 martie 2026 </time></small> </p> 
+    </address>
+    </main>
+  <footer>
+    
+    <a href="#welcome" id="link-top" title = "Du-te sus">
+        <div id="triunghi">&#5123;</div>
+    </a>
+  </footer>
+</body>
+    <%- include('../fragmente/footer.ejs') %>
+
+
+</html>

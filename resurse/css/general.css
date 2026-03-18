@@ -1,65 +1,3 @@
-/*INCEPUT RESET CSS*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-}
-
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-    display: block;
-}
-
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-/* Am scos 'ul, ol { list-style: none; }' 
-   din resetul original pentru a pastra structura */
-
-body {
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-}
-
-blockquote, q {
-    quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content: '';
-    content: none;
-}
-
-/*am pus din nou margini, altfel tot textul ar fi fost lipit*/
-h1, h2, h3, h4, h5, h6, p, ul, ol, dl, figure, blockquote {
-    margin-bottom: 15px; /* Spațiere de bază sub elementele de text */
-}
-
-/*adaug padding pentru liste*/
-ul:not(.meniu):not(.intro-oferte-lista), 
-ol {
-    padding-left: 20px;
-}
-
-/*SFARSIT RESET CSS*/
-
-
 :root {
     --culoare-fundal: #C9D7CA;        /* Verde-gri deschis*/
     --culoare-fundal-secundar: #E4EFE5; /* Verde-gri foarte deschis pentru secțiuni */
@@ -78,19 +16,19 @@ ol {
 
 
 h1 {
-    font-size: 3rem; /* De 3 ori mai mare decât textul de bază */
+    font-size: 3rem; /* De 3 ori mai mare decat textul de baza */
     font-weight: bold;
-    text-align: center; /* Îl centrăm frumos în header */
+    text-align: center; /* il centram frumos in header */
     color: var(--culoare-text);
     margin-bottom: 10px;
 }
 
 h2 {
-    font-size: 2rem; /* De 2 ori mai mare decât textul de bază */
+    font-size: 2rem; /* De 2 ori mai mare decat textul de baza */
     font-weight: bold;
     color: var(--culoare-text);
     margin-bottom: 15px;
-    border-bottom: 2px solid var(--culoare-primara); /* Un detaliu elegant sub titlurile de secțiuni */
+    border-bottom: 2px solid var(--culoare-primara);
     padding-bottom: 5px;
 }
 
@@ -122,7 +60,7 @@ main, footer, header {
     margin-right: var(--margine-pagina);
 }
 
-header, footer {
+header{
     background-color: var(--culoare-primara);
     padding: var(--padding-sectiuni);
     border-radius: 8px;
@@ -535,4 +473,50 @@ figure {
     color: var(--culoare-secundara);
     font-weight: bold;
     font-style: normal;
+}
+
+address {
+    font-style: normal; /*sa nu fie italic, cum e implicit*/
+    line-height: 1.8;
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+address iframe {
+    width: 100%;
+    max-width: 600px; 
+    height: 250px; 
+    border: none;
+    border-radius: 8px;
+    margin: 15px 0;
+    display: block;
+}
+
+address a {
+    text-decoration: none;
+    color: var(--culoare-text);
+    transition: color 0.3s ease;
+}
+
+address a:hover {
+    color: var(--culoare-accent );
+}
+
+address i {
+    margin-right: 8px;  
+    color: #555;
+    width: 20px;
+    text-align: center;
+}
+
+address p {
+    margin-top: 20px;
+    margin-bottom: 0;
+    color: var(--culoare-text);
+    font-size: 0.9em;
+    border-top: 1px solid var(--culoare-fundal-secundar);
+    padding-top: 10px;
 }
