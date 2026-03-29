@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="<%= locals.text %>">
+    
+    <meta name="keywords" content="eroare <%= locals.cod %>, eroare farmacia FMI, problema site">
+    <title><%= locals.cod %> - <%= locals.titlu %> | Farmacia FMI</title>
+
+    <%- include('../fragmente/head.ejs') %>
+</head>
+
+<body>
+    <%- include('../fragmente/header.ejs') %>
+    
+    <main style="text-align: center; padding: 50px 20px;">
+         <h2><%= locals.cod %> - <%= locals.titlu %></h2>
+         
+         <img src="<%= locals.imagine %>" alt="Ilustratie pentru eroarea <%= locals.cod %>" style="max-width: 300px; height: auto; margin: 20px 0;">
+         
+         <p><%= locals.text %></p>
+
+         <br>
+         <a href="/" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: var(--culoare-secundara); color: var(--culoare-negru-nav); text-decoration: none; border-radius: 5px;">
+            ← Inapoi la pagina principala
+         </a>
+    </main>
+  
+    <%- include('../fragmente/footer.ejs') %>
+</body>
+</html>

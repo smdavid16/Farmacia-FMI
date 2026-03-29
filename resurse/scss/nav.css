@@ -1,81 +1,134 @@
 @charset "UTF-8";
-nav {
-  --latime-buton: 120px;
+
+/* Variabilele raman globale — necesare si pe ecran mic */
+body {
+  --latime-buton: 170px;
   --inaltime-buton: 30px;
-  background-color: var(--culoare-contur);
+  --latime-li: 150px;
+  --culoare-fundal: #C9D7CA;
+  --culoare-fundal-secundar: #E4EFE5;
+  --culoare-text: #1a3a3a;
+  --culoare-primara: #81DBC4;
+  --culoare-secundara: #C5DB81;
+  --culoare-accent: #81DB87;
+  --culoare-accent-secundar: #A0DB81;
+  --culoare-negru-nav: black;
+  --culoare-tab-orar: #0b5944;
+  --culoare-inima: #e63946;
+  --culoare-contur: #333;
+  --culoare-border-hover: #ffffff;
+  --culoare-shadow-hover: #E4EFE1;
 }
 
-ul.meniu, ul.meniu ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
+/* Tot restul DOAR pe ecrane mari — nu interfereaza cu hamburger menu */
+@media (min-width: 701px) {
 
-#hamburger, #ch-menu {
-  display: none;
-}
+  #hamburger, #ch-menu {
+    display: none;
+  }
 
-.text-icon, .imag-icon {
-  display: inline-block;
-}
-
-ul.meniu {
-  display: flex;
-  position: relative;
-}
-
-ul.meniu ul {
-  display: none;
-  animation: animatie_submeniu 0.5s linear;
-}
-
-@keyframes animatie_submeniu {
-  0% {
+  nav {
+    background-color: var(--culoare-fundal);
+  }
+  nav ul.meniu {
+    display: flex;
+    position: relative;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  nav ul.meniu > li {
+    position: relative;
+    font-weight: bold;
+    width: var(--latime-buton);
+    height: var(--inaltime-buton);
+    background-color: var(--culoare-fundal);
+    border: 1px solid var(--culoare-contur);
+    color: var(--culoare-negru-nav);
+    text-align: center;
+    line-height: var(--inaltime-buton);
+    transition: all 1s linear;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+  nav ul.meniu > li::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    border: 2px solid var(--culoare-border-hover);
+    box-shadow: inset 0 0 20px var(--culoare-shadow-hover);
+    border-radius: 5px;
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 1s ease-in-out;
+    z-index: 1;
+    pointer-events: none;
+  }
+  nav ul.meniu > li:hover::after {
+    transform: scaleY(1);
+  }
+  nav ul.meniu > li .text-icon,
+  nav ul.meniu > li .imag-icon,
+  nav ul.meniu > li a {
+    position: relative;
+    z-index: 2;
+  }
+  nav ul.meniu > li a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  nav ul.meniu > li ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: var(--culoare-shadow-hover);
+    box-sizing: border-box;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
     transform: scale(0);
+    transform-origin: top left;
     opacity: 0;
-    transform-origin: top center;
+    visibility: hidden;
+    transition: transform 1s ease, opacity 1s ease;
   }
-  50% {
-    transform: scale(0.5, 1);
+  nav ul.meniu > li ul li {
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+    padding: 8px 0;
+    text-align: center;
   }
-  100% {
-    transform: scale(1);
+  nav ul.meniu > li ul li a {
+    display: inline-block;
+    text-decoration: underline;
+    text-decoration-style: double;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 4px;
+    transition: text-decoration-color 0.3s ease;
+  }
+  nav ul.meniu > li ul li:hover a {
+    text-decoration-color: var(--culoare-negru-nav);
+  }
+  nav ul.meniu > li:hover > ul {
+    transform: scaleY(1);
     opacity: 1;
+    visibility: visible;
   }
-}
-ul.meniu > li:hover ul {
-  display: block;
-  position: absolute;
-  color: var(--culoare-negru-nav);
-  z-index: 1; /*orice valoare mai mare decât 0*/
-}
 
-ul.meniu li {
-  font-weight: bold;
-  width: var(--latime-buton);
-  height: var(--inaltime-buton);
-  background-color: var(--culoare-fundal);
-  border: 1px solid var(--culoare-contur);
-  color: var(--culoare-negru-nav);
-  text-align: center;
-  line-height: var(--inaltime-buton);
-  /* text-decoration: none; */
-  /* margin-right: 10px; */
-  transition: all 1s linear;
-  cursor: pointer;
-}
-
-ul.meniu li:hover {
-  background-color: var(--culoare-contur);
-  color: var(--culoare-accent-secundar); /*SCHIMBA*/
-}
-
-ul.meniu li a {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
+} /* end @media (min-width: 701px) */
 
 /*# sourceMappingURL=nav.css.map */

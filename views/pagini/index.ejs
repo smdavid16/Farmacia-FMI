@@ -10,6 +10,7 @@
     <%- include('../fragmente/head.ejs') %>
 </head>
 
+
 <body>
     <%- include('../fragmente/header.ejs') %>
  <main>
@@ -17,6 +18,7 @@
             <section id="welcome" class="f-pattern-layout">
                 <hgroup class="f-header">
                     <h2>Bine ați venit la Farmacia FMI</h2>
+                    <p id="watermark"></p>
                     <p class="subtitlu">Prezentarea farmaciei FMI</p>
                     <p class="intro">Vă mulțumim că ne vizitați site-ul. Avem aici medicamente virtuale. Sănătate!
                     </p>
@@ -165,7 +167,6 @@
                     <table id="tab-orar">
                         <caption>Programul de functionare al farmaciei FMI</caption>
                         <thead>
-
                             <tr>
                                 <th>Perioadă</th>
                                 <th>Zi</th>
@@ -173,48 +174,48 @@
                                 <th>Pauza de masa</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="grup-lucru">
                             <tr>
-                                <td rowspan="5" class = "roz">Zile<br/>Lucrătoare</td>
+                                <td rowspan="5" class="roz">Zile<br/>Lucrătoare</td>
                                 <td>Luni</td>
                                 <td>8-20</td>
                                 <td>13:30-14</td>
                             </tr>
-                            <tr>
+                            <tr class="rand-decalat">
                                 <td>Marti</td>
                                 <td>8-20</td>
                                 <td>13:30-14</td>
                             </tr>
-                            <tr>
-                                
+                            <tr class="rand-decalat">
                                 <td>Miercuri</td>
                                 <td>8-20</td>
                                 <td>13:30-14</td>
                             </tr>
-                            <tr>
-                                
+                            <tr class="rand-decalat">
                                 <td>Joi</td>
                                 <td>8-20</td>
                                 <td>13:30-14</td>
                             </tr>
-                            <tr>                            
+                            <tr class="rand-decalat">
                                 <td>Vineri</td>
                                 <td>8-20</td>
                                 <td>13:30-14</td>
                             </tr>
-                            <tr>
-                                <td rowspan="2" class = "roz">Weekend</td>
-                                <td>Sambata</td>
-                                <td>9-16</td>
-                                <td>13:30-14</td>
-                            </tr>
-                            <tr>
-                                <td>Duminica</td>
-                                <td>inchis</td>
-                                <td>inchis</td>
-                            </tr>
                         </tbody>
-                        <tfoot>
+                            <tbody class="grup-weekend">
+                                <tr>
+                                    <td rowspan="2" class="roz">Weekend</td>
+                                    <td>Sambata</td>
+                                    <td>9-16</td>
+                                    <td>13:30-14</td>
+                                </tr>
+                                <tr class="rand-decalat">
+                                    <td>Duminica</td>
+                                    <td>inchis</td>
+                                    <td>inchis</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
                             <tr>
                                 <td colspan="4">Închis cu ocazia sărbătorilor legale, sau, când ne e mai lene așa.</td>
                             </tr>
@@ -232,7 +233,7 @@
             </section>
             <section id="date-utilizator" class="placeholder-box">
                 <h3>Date Utilizator</h3>
-                <p>IP: 192.168.1.1<br>Status: Sănătos (deocamdată)</p>
+                <p>IP: <%= locals.ipClient %><br>Status: Sănătos (deocamdată)</p>
             </section>
             
             <section id="anunturi">
@@ -306,23 +307,8 @@
 
             </div>
         </section>
-
-
-    <address>
-    Scrieti-mi aici <a href="mailto:contact@farmaciafmi.com"><i class="fa-solid fa-envelope"></i>David Soisun</a><br>
-    Telefon: <a href="tel:+40712345678" target="_blank"><i class="fa-solid fa-phone"></i>+40 712 345 678</a><br>
-    Whatsapp: <a href="https://wa.me/407123" target="_blank"><i class="fa-brands fa-whatsapp"></i>+40 712 345 678 </a><br>
-    Vizitati-ne la : <br>
-    <iframe src="https://www.google.com/maps?q=44.435556,26.09975&hl=ro&z=19&output=embed" width="400" height="250" allowfullscreen=""></iframe>
-    <p><small>Copyright &copy;2026 Soisun Mina-David, Data creării: <time datetime="2026-03-02">2 martie 2026 </time></small> </p> 
-    </address>
     </main>
-  <footer>
-    
-    <a href="#welcome" id="link-top" title = "Du-te sus">
-        <div id="triunghi">&#5123;</div>
-    </a>
-  </footer>
+
 </body>
     <%- include('../fragmente/footer.ejs') %>
 

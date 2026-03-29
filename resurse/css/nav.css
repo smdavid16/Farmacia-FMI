@@ -1,5 +1,5 @@
 nav{
-    --latime-buton: 120px;
+    --latime-buton: 170px;
     --inaltime-buton: 30px;
     background-color: var(--culoare-contur);
 }
@@ -64,7 +64,7 @@ ul.meniu li{
     text-align: center;
     line-height: var(--inaltime-buton);
     /* text-decoration: none; */
-    /* margin-right: 10px; */
+    margin-right: 10px; 
     transition: all 1s linear;
     cursor: pointer;
 }

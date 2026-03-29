@@ -1,0 +1,184 @@
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 1.5cm;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        font-size: 11pt;
+        line-height: 1.4;
+        color: #000 !important;
+        background: transparent !important;
+    }
+
+    nav, 
+    #hamburger, 
+    #ch-menu, 
+    a[href^="#"],
+    .delta-button-class,
+    header img,
+    video, audio, iframe,img {
+        display: none !important;
+    }
+
+    a[href]:after {
+        content: none !important;
+    }
+
+    
+    ul.meniu {
+        display: none !important;
+    }
+
+    main, section, .container {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .grid-container {
+        display: block;
+    }
+
+    .grid-item, .card {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 20px;
+        width: 100% !important;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    h1, h2, h3 {
+        page-break-after: avoid;
+        break-after: avoid;
+        color: #000 !important;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        orphans: 3;
+        widows: 3;
+    }
+
+    table {
+        width: 100% !important;
+        border-collapse: collapse;
+        page-break-inside: avoid;
+    }
+
+    th, td {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+
+    #grid-pagina {
+			font-size: 10px;
+			box-sizing: border-box;
+			page-break-before: always;
+			background-color: white;
+
+			display: block;
+		}
+
+        #absolut {
+			position: absolute;
+			display: inline-block;
+			bottom: 0%;
+			width: 20px;
+			height: 20px;
+			right: 0;
+			overflow: visible;
+		}
+
+		#absolut::after {
+			content: "Element poziționat absolut pe a doua pagină.Pentru a vedea stilul de printare apăsați Ctrl+P.";
+			position: absolute;
+			font-size: 10px;
+			right: 0;
+			width: 200px;
+			height: 35px;
+			display: inline-block;
+		}
+
+		h1 {
+        /* Reset setari */
+        margin: 0; 
+        page-break-after: always;
+
+        position: absolute;
+        bottom: 50%;
+        left: 15%;
+        width: 70%;
+        
+    }
+
+        @page {
+		size: A4 portrait;
+		margin-bottom: 2cm;
+		margin-top: 2cm;
+		counter-increment: page;
+
+	}
+
+	@page: left {
+
+		margin-left: 3cm;
+		margin-right: 1cm;
+	}
+
+	@page: right {
+
+		margin-right: 3cm;
+		margin-left: 1cm;
+	}
+
+    #watermark {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 4cm;
+        height: 1cm;
+        opacity: 0.4;
+        font-weight: bold;
+        text-align: center;
+        font-size: 9pt;
+        background: white;
+        z-index: 9999;
+    }
+
+    
+    footer {
+        page-break-before: always;
+        border: none;
+        padding: 0;
+    }
+
+    footer p {
+        position: absolute;
+        bottom: 0;
+        left: 15%;
+        width: 60%;
+        border: 4px inset black;
+        padding: 10px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
+

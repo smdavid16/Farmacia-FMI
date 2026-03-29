@@ -1,0 +1,39 @@
+{
+  "cale_baza": "/resurse/imagini/erori/",
+  "eroare_default": {
+    "titlu": "Eroare neașteptata",
+    "text": "Ne pare rau, dar a apărut o problema la procesarea cererii tale. Te rugam sa incerci din nou mai tarziu.",
+    "imagine": "default.png"
+  },
+  "info_erori": [
+    {
+      "identificator": 404,
+      "status": true,
+      "titlu": "Pagina nu a fost gasita",
+      "text": "Pagina pe care o cauti nu exista, a fost stearsa sau i-a fost schimbat numele.",
+      "imagine": "404.webp"
+    },
+    {
+      "identificator": 403,
+      "status": true,
+      "titlu": "Acces interzis",
+      "text": "Nu ai permisiunile necesare pentru a vizualiza această pagina sau resursa.",
+      "imagine": "403.png"
+    },
+    {
+      "identificator": 500,
+      "status": true,
+      "titlu": "Eroare interna a serverului",
+      "text": "Serverul a intampinat o situatie neprevazuta",
+      "imagine": "500.png"
+    },
+    {
+      "identificator": 400,
+      "status": true,
+      "titlu": "Bad Request",
+      "text": "Bad Request: acces interzis",
+      "imagine": "400.png"
+    }
+
+  ]
+}
