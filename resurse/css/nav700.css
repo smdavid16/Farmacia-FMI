@@ -1,4 +1,3 @@
-
 /* 1. VARIABILE */
 body {
     --latime-buton: 170px;
@@ -42,7 +41,6 @@ nav {
     display: none;
 }
 
-/* 3. MENIU PRINCIPAL — stare inchisa */
 nav ul.meniu {
     display: block !important;
     position: absolute !important;
@@ -58,151 +56,114 @@ nav ul.meniu {
     padding: 0 !important;
 }
 
-/* 4. TRIGGER — deschide meniul */
 #ch-menu:checked ~ ul.meniu {
-    max-height: 1500px !important;
+    max-height: 2000px !important;
 }
 
-/* ============================================================
-   ANIMATIE CLIP-PATH
-   
-   Forma sageta spre dreapta:
-   
-       0%,0%  ──────────── 90%,0%
-         |                      \
-         |               varf → 110%, 50%
-         |                      /
-       0%,100% ─────────── 90%,100%
-   
-   from: poligon aplatizat la mijloc (efect de linie)
-   to:   forma completa de sageta
-   
-   Animatia e pe .text-icon, nu pe <li>,
-   pentru ca alte nav.css nu interfereaza cu .text-icon.
-   ============================================================ */
-
-@keyframes nav700-sageta {
-    from {
-        /* Baza este în stânga (0%), iar vârful începe mai de la mijloc (40%) */
-        clip-path: polygon(0% 0%, 0% 0%, 40% 50%, 0% 100%, 0% 100%);
+@keyframes nav700-sageta-li {
+    0% {
+        clip-path: polygon(0% 0%, 0% 0%, 5% 50%, 0% 100%, 0% 100%);
         opacity: 0;
     }
-    to {
-        /* Baza ajunge la final (100%), umplând dreptunghiul.
-           Vârful merge până la 140% ca să mențină viteza constantă și să nu se oprească vizual. */
-        clip-path: polygon(0% 0%, 100% 0%, 140% 50%, 100% 100%, 0% 100%);
+    10% {
         opacity: 1;
     }
+    100% {
+        clip-path: polygon(0% 0%, 100% 0%, 130% 50%, 100% 100%, 0% 100%);
+        opacity: 1;
+    }
+}
+/* 5. LI — CONTAINERUL CARE SE ANIMEAZA */
+nav ul.meniu > li {
+    width: 100% !important;
+    text-align: center !important;
+    display: block !important;
+    height: auto !important; /* Aici inaltimea creste cu tot cu submeniu */
+    position: relative;
+    background-color: var(--culoare-accent); 
+    font-weight: bold;
+    color: var(--culoare-negru-nav);
+    border: 1px solid var(--culoare-contur);
+    transition: all 1s linear;
+    cursor: pointer;
+    
+    opacity: 0;
+    clip-path: polygon(-50% 0%, -50% 0%, -10% 50%, -20% 100%, -20% 100%);
+}
+
+/* 6. DECLANSARE ANIMATIE & DELAY-URI LA DESCHIDEREA MENIULUI */
+#ch-menu:checked ~ ul.meniu > li {
+    animation-name: nav700-sageta-li;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+/* 7. ANIMAȚIA ::AFTER - Mutata pe containerele de text pentru a nu acoperi submeniul */
+nav ul.meniu > li > .text-icon::after,
+nav ul.meniu > li > #acasa-mediu::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    border: 2px solid var(--culoare-border-hover);
+    box-shadow: inset 0 0 20px var(--culoare-shadow-hover);
+    border-radius: 5px;
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 1s ease-in-out;
+    z-index: -1; /* O punem sub text, dar deasupra fundalului li-ului */
+    pointer-events: none;
+}
+
+/* DECLANSATORUL ANIMAȚIEI ::AFTER LA HOVER */
+nav ul.meniu > li:hover > .text-icon::after,
+nav ul.meniu > li:hover > #acasa-mediu::after {
+    transform: scaleY(1);
+}
+
+/* 8. STILIZARE LINK-URI INTERIOARE */
+nav ul.meniu > li > .text-icon,
+nav ul.meniu > li > #acasa-mediu {
+    display: block !important;
+    visibility: visible !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+    background-color: transparent !important;
+    border-radius: 0;
+    position: relative;
+    z-index: 2; /* Creaza context pentru ca ::after sa functioneze corect */
 }
 
 nav ul.meniu > li > #acasa {
     display: none !important;
 }
 
-/* 2. Afișăm varianta cu iconiță și o pregătim pentru animație */
-nav ul.meniu > li > #acasa-mediu {
-    display: block !important;
-    visibility: visible !important;
-    
-    /* Starea inițială a benzii (identică cu .text-icon) */
-    clip-path: polygon(0% 0%, 0% 0%, 15px 50%, 0% 100%, 0% 100%);
-    opacity: 0;
-    background-color: var(--culoare-accent);
-    border-radius: 5px;
-}
-
-/* 3. Stilizăm link-ul și iconița din interior pentru a semăna cu un buton */
+nav ul.meniu > li > .text-icon a,
 nav ul.meniu > li > #acasa-mediu a {
-    display: block !important;
-    padding: 15px 0 !important;
-    font-size: 1.2rem !important;
-    color: var(--culoare-text) !important;
-    text-align: center;
-    text-decoration: none !important;
-    transition: background-color 1s ease, box-shadow 1s ease !important;
-}
-
-/* 4. Pornim animația benzii când meniul se deschide */
-#ch-menu:checked ~ ul.meniu > li > #acasa-mediu {
-    animation-name: nav700-sageta;
-    animation-duration: 2s;
-    animation-timing-function: ease-out;
-    animation-fill-mode: forwards;
-}
-
-/* 5. Efectul de hover pe căsuță (identic cu restul butoanelor) */
-nav ul.meniu > li:hover > #acasa-mediu a {
-    background-color: var(--culoare-secundara) !important;
-    box-shadow: inset 0 0 10px var(--culoare-box-shadow-nav) !important;
-    border-radius: 5px !important;
-}
-/* 5. LI — container neutru, fara clip-path sau opacity
-   (lasam alte CSS-uri in pace pe <li>) */
-nav ul.meniu > li {
-    width: 100% !important;
-    text-align: center !important;
-    border: none !important;
-    display: block !important;
-    height: auto !important;
-}
-
-nav ul.meniu > li::after {
-    display: none !important;
-}
-
-/* 6. .TEXT-ICON — stare initiala: ascuns
-   Alte nav.css nu au reguli pentru .text-icon in
-   context de hamburger, deci nu pot suprascrie. */
-nav ul.meniu > li > .text-icon {
-    display: block !important;
-    visibility: visible !important;
-    /* Trebuie să se potrivească exact cu starea de 0% din keyframes */
-    clip-path: polygon(0% 0%, 10% 20%, 40% 50%, 0% 100%, 0% 100%);    
-    opacity: 0;
-    background-color: var(--culoare-accent); 
-    
-    /* Opțional: un mic border-radius ca să arate mai fin la final */
-    border-radius: 5px;
-}
-
-/* 7. .TEXT-ICON — animatie cand meniul e deschis
-   Folosim proprietati individuale (NU shorthand) deoarece
-   animation: ... ignora !important in toate browserele. */
-#ch-menu:checked ~ ul.meniu > li > .text-icon {
-    animation-name: nav700-sageta;
-    /* Poți crește durata la 0.8s sau 1s dacă vrei să vezi efectul mai clar */
-    animation-duration: 2s; 
-    animation-timing-function: ease-out;
-    animation-fill-mode: forwards;
-}
-
-/* 8. DELAY-URI EN CASCADE */
-
-/* 9. LINK-URI DIN .TEXT-ICON */
-nav ul.meniu > li > .text-icon a {
     display: block !important;
     padding: 15px 0 !important;
     font-size: 1.2rem !important;
     font-weight: bold !important;
     text-decoration: none !important;
     color: var(--culoare-text) !important;
-    transition: background-color 1s ease, box-shadow 1s ease !important;
-    background-color: rgba(129, 219, 196, 0.2);
+    transition: all 1s ease !important;
+    background-color: transparent !important;
+    position: relative;
+    z-index: 2;
 }
 
-nav ul.meniu > li:hover > .text-icon a {
+/* 9. HOVER PE LI (Schimba background-ul parintelui) */
+nav ul.meniu > li:hover {
     background-color: var(--culoare-secundara) !important;
-    box-shadow: inset 0 0 10px var(--culoare-box-shadow-nav) !important;
-    border-radius: 5px !important;
-    color: var(--culoare-text) !important;
+    box-shadow: inset 0 0 15px var(--culoare-box-shadow-nav) !important;
+    transition: all 1s ease !important;
 }
 
-/* 10. ICON IMAGINE — ascuns pe ecran mic */
-nav ul.meniu .imag-icon {
-    display: none !important;
-}
-
-/* 11. SUBMENURI */
+/* 10. SUBMENIURI (Verticale sub buton) */
 nav ul.meniu li ul {
     display: block !important;
     position: static !important;
@@ -213,14 +174,19 @@ nav ul.meniu li ul {
     visibility: visible !important;
     max-height: 0 !important;
     overflow: hidden !important;
-    transition: max-height 0.4s ease-in-out !important;
+    transition: max-height 1s ease-in-out !important;
     padding: 0 !important;
     margin: 0 !important;
+    position: relative;
+    z-index: 2;
 }
 
 nav ul.meniu li ul li {
     width: 100% !important;
     padding: 0 !important;
+    background-color: transparent !important;
+    clip-path: none !important;
+    opacity: 1 !important;
 }
 
 nav ul.meniu li ul li a {
@@ -233,9 +199,16 @@ nav ul.meniu li ul li a {
 
 nav ul.meniu li ul li a:hover {
     color: var(--culoare-accent) !important;
-    text-decoration: underline !important;
+    text-decoration: double underline !important;
+    background-color: var(--culoare-fundal-secundar) !important;
 }
 
+/* Afisare submeniu la hover pe parinte */
 nav ul.meniu > li:hover > ul {
     max-height: 600px !important;
+}
+
+/* 11. ICON IMAGINE — ascuns pe ecran mic */
+nav ul.meniu .imag-icon {
+    display: none !important;
 }

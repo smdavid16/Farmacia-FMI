@@ -547,3 +547,19 @@ address p {
     border-top: 1px solid var(--culoare-fundal-secundar);
     padding-top: 10px;
 }
+
+#watermark{
+    display: none;
+}
+
+footer p{
+    display:none;
+}
+
+/* a:visited{
+    color: orange;
+} */
+
+a:active{
+    color: red;
+}
