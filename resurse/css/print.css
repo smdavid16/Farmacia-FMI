@@ -161,6 +161,19 @@
         font-size: 9pt;
         background: white;
         z-index: 9999;
+        border: 3px solid #000;
+        border-radius: 8px;
+        line-height: 1.2;
+        padding: 2px 4px;
+        box-sizing: border-box;
+    }
+
+    #watermark::before {
+        content: "Soisun";
+    }
+
+    #watermark::after {
+        content: "Mina-David";
     }
 
     
@@ -182,4 +195,6 @@
         box-sizing: border-box;
     }
 }
-
+.link-extern {
+    display: none !important;
+}

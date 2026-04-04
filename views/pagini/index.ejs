@@ -14,7 +14,7 @@
 <body>
     <%- include('../fragmente/header.ejs') %>
  <main>
-    <a href = "https://www.google.com">Google</a>
+    <a href = "https://www.google.com" class = "link-extern">Google</a>
     <div id="grid-pagina">
             <section id="welcome" class="f-pattern-layout">
                 <hgroup class="f-header">
@@ -59,9 +59,11 @@
                     <div id="container-video">
                         <img class="farfurie" src="/resurse/imagini/acid_boric.webp" alt="farfurie" title="Acid Boric" style="width: 100%; border-radius: 8px;">
                         <div id="clip-video" style="margin-top: 10px;">
-                            <video width="100%" playsinline autoplay loop muted style="border-radius: 8px; border: 2px solid var(--culoare-primara);">
+                            <video poster = "/resurse/imagini/pastile.jpeg" width="100%" controls playsinline autoplay loop muted style="border-radius: 8px; border: 2px solid var(--culoare-primara);">
                                 <source src="/resurse/video/farmacie_stock.mp4" type="video/mp4">
-                                <source src="/resurse/video/farma.mp4" type="video/ogv">
+                                <source src="/resurse/video/farmacie_stock.ogv" type="video/ogv">
+                                <track default kind="subtitles" srclang="ro" src="/resurse/subtitrari/romana.vtt" label="română">
+                                <track kind="subtitles" srclang="en" src="/resurse/subtitrari/engleza.vtt" label="english">
                             </video>
                         </div>
                     </div>

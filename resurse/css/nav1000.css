@@ -11,16 +11,14 @@ body {
 }
 
 nav ul.meniu ul {
-    /* Îi spunem să se întindă exact cât e textul de lung, eliminând spațiul mort din margini */
     width: max-content; 
-    min-width: 100%; /* Dar să nu fie mai îngust decât butonul părinte (iconița) */
+    min-width: 100%;
 }
 
 nav ul.meniu ul li {
-    font-size: 1em; /* Micșorăm fontul cu 15% pentru a fi proporțional cu restul ecranului */
+    font-size: 1em; /
 }
 
-/* Opțional, dacă vrei ca textul să arate mai organizat când spațiul e mic */
 nav ul.meniu ul li a {
-    white-space: nowrap; /* Împiedică textele precum "Bine ati venit" să se spargă pe 2 rânduri dacă nu e nevoie */
+    white-space: nowrap;
 }

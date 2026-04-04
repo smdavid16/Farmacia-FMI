@@ -9,6 +9,11 @@
     --culoare-negru-nav: black;
     --culoare-tab-orar: #0b5944; 
     --culoare-inima: #e63946; /* rosu aprins pentru elemente de atentie */
+    --culoare-alb-subtitrari: #ffffff; /* alb pentru textul subtitrarilor */
+    --culoare-link-vizitat: #8e44ad; /* Un mov diferit de cel implicit */
+    --culoare-pata-c1: rgba(52, 152, 219, 0.3); /* Culoarea semi-transparentă pentru efectul de fundal */
+    --culoare-simbol-hover: #e74c3c; /* Culoarea nouă a simbolului la hover */
+
 
     --margine-pagina: 100px;
     --padding-sectiuni: 20px;
@@ -299,7 +304,7 @@ figure {
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 130px;
+    width: 160px;
     padding: 8px 10px;
     border-left: none;
     color: var(--culoare-neqru-nav);
@@ -556,10 +561,50 @@ footer p{
     display:none;
 }
 
-/* a:visited{
-    color: orange;
-} */
+a:visited {
+    color: var(--culoare-link-vizitat);
+}
 
-a:active{
+a:active {
     color: red;
+}
+
+a[href^="http"]::before {
+    content: "⮳ "; 
+    font-size: 1.5em; 
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+/* La hover pe linkul extern, doar simbolul (::before) îsi schimba culoarea */
+a[href^="http"]:hover::before {
+    color: var(--culoare-simbol-hover);
+}
+
+main a {
+    background-image: radial-gradient(
+        circle, 
+        var(--culoare-pata-c1) 0%, 
+        var(--culoare-pata-c1) 40%, 
+        transparent 80%, 
+        transparent 100%
+    );
+    background-position: center; /* Centrat */
+    background-repeat: no-repeat;
+    background-size: 0% 0%; 
+    
+    transition: background-size 0.5s ease-in-out;
+    
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+main a:hover {
+    background-size: 100% 100%;
+}
+
+
+video::cue {
+    color: var(--culoare-alb-subtitrari);
+    background-color: var(--culoare-text);
 }
