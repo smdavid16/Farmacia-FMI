@@ -90,6 +90,17 @@ header{
         "zona5 zona6 zona8 zona8 zona8"
         "zona4 zona4 zona3 zona3 zona7";
 }
+
+#grid-galerie {
+    display: grid;
+    /* Forces exactly 3 columns */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px; /* Adjust spacing between grid items */
+}
+
+.spatiu-gol {
+    visibility: hidden; 
+}
 .placeholder-box {
     display: flex;
     flex-direction: column;
@@ -607,4 +618,142 @@ main a:hover {
 video::cue {
     color: var(--culoare-alb-subtitrari);
     background-color: var(--culoare-text);
+}
+
+#dv-prezentare figure {
+    margin: 0;
+    padding: 0;
+}
+
+.efect-duotone {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    overflow: hidden; /*ascunde depasirile pseudoelementelor */
+}
+
+.efect-duotone::before,
+.efect-duotone::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1.5s ease-in-out; /* Seteaza viteza animatiei */
+    pointer-events: none; /* Permite click-ul/hover-ul sa treaca prin ele catre div-ul parinte */
+}
+
+/* before, vine din stanga*/
+.efect-duotone::before {
+    left: 0;
+    background-color: var(--culoare-secundara);
+    mix-blend-mode: multiply; /* Un mod de blend bun pentru culori deschise/duotone */
+    transform: translateX(-100%); /* ascuns initial */
+}
+
+/* after, vine din dreapta */
+.efect-duotone::after {
+    right: 0;
+    background-color: var(--culoare-link-vizitat);
+    mix-blend-mode: multiply; /* mod blend care seamana cu cel din site (cred ca e acelasi) */
+    transform: translateX(100%); /* ascuns initial */
+}
+
+.efect-duotone:hover::before,
+.efect-duotone:hover::after {
+    transform: translateX(0); /* muta spre centru ca sa umple div */
+}
+
+/* Stilurile de bază ale listei */
+.lista-disclaimer {
+    list-style: disc;
+    margin-left: 20px;
+    padding-left: 0;
+    line-height: 1.6;
+}
+
+.lista-disclaimer li {
+    margin-bottom: 24px; 
+    position: relative;
+    cursor: pointer; 
+}
+
+/* Reflexia statică cu mască de unde */
+.lista-disclaimer li::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    transform-origin: 0 0;
+    
+    transform: rotateX(180deg) skew(-45deg) scaleY(0.5) translate(10px, -10px); 
+    
+    opacity: 0.55;
+    pointer-events: none;
+    color: inherit;
+    
+    /* Masca pentru unde eliptice */
+    -webkit-mask-image: repeating-radial-gradient(
+        ellipse 150% 100% at 50% 0%, 
+        black 0px, 
+        rgba(0,0,0,0.2) 3px, 
+        black 6px
+    );
+    mask-image: repeating-radial-gradient(
+        ellipse 150% 100% at 50% 0%, 
+        black 0px, 
+        rgba(0,0,0,0.2) 3px, 
+        black 6px
+    );
+    
+    -webkit-mask-size: 100% 200%;
+    mask-size: 100% 200%;
+    
+    /* Efect de blur pentru apă */
+    filter: blur(1px); 
+}
+
+/* Declanșarea animației strict pe rândul pe care se face hover */
+.lista-disclaimer li:hover::after {
+    animation: miscare-unde-lista 0.5s linear infinite; 
+}
+
+/* Animația fluidă */
+@keyframes miscare-unde-lista {
+    0% {
+        -webkit-mask-position: 50% 0px;
+        mask-position: 50% 0px;
+    }
+    100% {
+        -webkit-mask-position: 50% 24px; 
+        mask-position: 50% 24px;
+    }
+}
+
+
+hr.separator-sageti {
+    display: block;
+    border: none;
+    height: 40px; 
+    margin: 40px 0;
+    
+    /*primul linear-gradient este pentru partea de sus a sagetii      \ */
+    /*al doilea linear-gradient este pentru partea de sus a sagetii   / */
+
+    background-image: 
+        linear-gradient(45deg, transparent 30%, var(--culoare-negru-nav) 30%, var(--culoare-negru-nav) 70%, transparent 70%),
+        linear-gradient(-45deg, transparent 30%, var(--culoare-negru-nav) 30%, var(--culoare-negru-nav) 70%, transparent 70%);
+    
+    /*latimea unui gradien e 20px, 2 formeaza o sageata de 40px*/
+    background-size: 40px 20px;
+    
+    /*gradient 1: pozitia x = 0, y = 0*/
+    /*gradient 2: pozitia x = 0, y = 20*/
+
+    background-position: 0 0, 0 20px;
+    /*repeta pe x pe intreaga latime a paginii*/
+    background-repeat: repeat-x;
 }

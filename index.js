@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const sass = require("sass");
+const sharp = require("sharp");
+const pg = require("pg");
 
 app = express();
 app.set("view engine", "ejs");
@@ -14,11 +16,17 @@ let obGlobal = {
     folderBackup: path.join(__dirname, "backup"),
 };
 
+const caleScssVarInitial = path.join(obGlobal.folderScss, "_galerie_variabile.scss");
+if (!fs.existsSync(caleScssVarInitial) || fs.readFileSync(caleScssVarInitial, 'utf8').trim() === "") {
+    fs.writeFileSync(caleScssVarInitial, `$nr-imagini: 4;\n`);
+}
+
 function compileazaScss(caleScss, caleCss) {
     if (!caleCss) {
-        let numeFisExt = path.basename(caleScss);
-        let numeFis = numeFisExt.split(".")[0];
-        caleCss = numeFis + ".css";
+        let extensie = path.extname(caleScss); 
+        let numeFaraExtensie = path.basename(caleScss, extensie); 
+        // extragem doar numele fara extensie si adaugam .css
+        caleCss = numeFaraExtensie + ".css";
     }
 
     if (!path.isAbsolute(caleScss))
@@ -31,9 +39,19 @@ function compileazaScss(caleScss, caleCss) {
         fs.mkdirSync(caleBackup, { recursive: true });
     }
 
-    let numeFisCss = path.basename(caleCss);
+    //TIMESTAMP IN BACKUP:
     if (fs.existsSync(caleCss)) {
-        fs.copyFileSync(caleCss, path.join(obGlobal.folderBackup, "resurse/css", numeFisCss));
+        let numeFisCss = path.basename(caleCss); // ex: "galerie_animata.css"
+        let extensie = path.extname(numeFisCss); // ex: ".css"
+        let numeFaraExtensie = path.basename(numeFisCss, extensie); // ex: "galerie_animata"
+        
+        // Generam timestamp-ul curent in nr de ms
+        let timestamp = Date.now(); 
+        
+        // noul nume: nume_timestamp.extensie
+        let numeBackupCuTimestamp = `${numeFaraExtensie}_${timestamp}${extensie}`;
+        
+        fs.copyFileSync(caleCss, path.join(caleBackup, numeBackupCuTimestamp));
     }
     
     try {
@@ -63,6 +81,32 @@ if (fs.existsSync(obGlobal.folderScss)) {
     });
 }
 
+
+function initImagini(){
+    var continut= fs.readFileSync(path.join(__dirname,"resurse/json/galerie.json")).toString("utf-8");
+
+    obGlobal.obImagini=JSON.parse(continut);
+    let vImagini=obGlobal.obImagini.imagini;
+    let caleGalerie=obGlobal.obImagini.cale_galerie
+
+    let caleAbs=path.join(__dirname,caleGalerie);
+    let caleAbsMediu=path.join(caleAbs, "mediu");
+    if (!fs.existsSync(caleAbsMediu))
+        fs.mkdirSync(caleAbsMediu);
+    
+    for (let imag of vImagini){
+        [numeFis, ext]=imag.fisier.split("."); //"ceva.png" -> ["ceva", "png"]
+        let caleFisAbs=path.join(caleAbs,imag.fisier);
+        let caleFisMediuAbs=path.join(caleAbsMediu, numeFis+".webp");
+        sharp(caleFisAbs).resize(300).toFile(caleFisMediuAbs);
+        imag.fisier_mediu=path.join("/", caleGalerie, "mediu", numeFis+".webp" )
+        imag.fisier=path.join("/", caleGalerie, imag.fisier )
+        
+    }
+    // console.log(obGlobal.obImagini)
+}
+initImagini();
+
 function initErori() {
     let caleJson = path.join(__dirname, "resurse/json/erori.json");
 
@@ -83,7 +127,7 @@ function initErori() {
         }
 
         function parseazaString() {
-            index++; // sari peste "
+            index++; // sare peste "
             let rezultat = '';
             while (index < text.length) {
                 let c = text[index];
@@ -200,10 +244,10 @@ function initErori() {
         }
     }
 
-    // 8. Verificarea existentei fisierelor imagine + adaugarea căii
+    // 8. Verificarea existentei fisierelor imagine + adaugarea caii
     let caleImgDefault = path.join(caleBazaAbsoluta, errDef.imagine);
     if (!fs.existsSync(caleImgDefault)) {
-        console.error(`Eroare: Imaginea pentru eroarea default ("${errDef.imagine}") nu exista in file system!`);
+        console.error(`Eroare: Imaginea pentru eroarea default ("${errDef.imagine}") nu exista`);
         process.exit(1);
     }
     obGlobal.obErori.eroare_default.imagine = path.posix.join(obGlobal.obErori.cale_baza, errDef.imagine);
@@ -261,6 +305,19 @@ console.log("Folder index.js", __dirname);
 console.log("Folder curent (de lucru)", process.cwd());
 console.log("Cale fisier", __filename);
 
+client=new pg.Client({
+    database:"cti_2026",
+    user:"david",
+    password:"david",
+    host:"localhost",
+    port:5432
+})
+
+client.connect()
+
+
+
+
 app.get("/cale", function(req, res){
     res.send("Raspuns la cererea <b style='color: red;'>GET</b> pe /cale");
     console.log("Am primit o cerere GET pe /cale");
@@ -275,13 +332,80 @@ app.get("/cale2", function(req, res){
 
 app.get(["/", "/index", "/home"], function(req, res){
     let adresaIp = req.ip;
-    res.render("pagini/index", { ipClient: adresaIp });
+
+    // 1. Calculam un numar aleatoriu N (putere a lui 2: 2, 4, 8, 16)
+    const puteri = [2, 4, 8, 16];
+    const nrImaginiAleator = puteri[Math.floor(Math.random() * puteri.length)];
+
+    // 2. Selectam primele N imagini cu indice par din JSON
+    let toateImaginile = obGlobal.obImagini.imagini;
+    let imaginiPare = toateImaginile.filter((_, index) => index % 2 === 0);
+    
+    // Luam primele N imagini (daca exista destule în JSON)
+    let selectatePentruGalerie = imaginiPare.slice(0, nrImaginiAleator);
+    
+    // Actualizam numarul real in caz ca in JSON sunt mai putine imagini decat N
+    const nrFinal = selectatePentruGalerie.length;
+    console.log(`Numar aleatoriu generat: ${nrImaginiAleator}. Imagini selectate pentru galerie: ${nrFinal}.`);
+    // 3. Generam fisierul SASS de variabile pentru a acomoda numarul de imagini
+    // Vom scrie in "_galerie_variabile.scss" care va fi importat in galerie_animata.scss
+    const caleScssVar = path.join(obGlobal.folderScss, "_galerie_variabile.scss");
+    try {
+        fs.writeFileSync(caleScssVar, `$nr-imagini: ${nrFinal};\n`);
+        
+        // 4. Fortam compilarea fisierului principal al galeriei
+        compileazaScss("galerie_animata.scss");
+    } catch (err) {
+        console.error("Eroare la scrierea/compilarea SASS dinamic:", err);
+    }
+
+    res.render("pagini/index", { 
+        ipClient: adresaIp,
+        imagini: obGlobal.obImagini.imagini,
+        imaginiGalerieAnimata: selectatePentruGalerie
+    });
+    
     console.log("Am primit o cerere GET pe / de la IP:", adresaIp);
 });
 
 app.get("/despre", function(req, res){
     res.render("pagini/despre");
     console.log("Am primit o cerere GET pe /despre");
+});
+
+app.get("/produse", function(req, res){
+    clauzaWhere = "";
+    if (req.query.tip) {
+        clauzaWhere = `where tip_produs='${req.query.tip}'`;
+    }
+    client.query(`select * from prajituri ${clauzaWhere}`, function(err, rez){
+    if (err){
+        console.error("Eroare la interogare", err);
+        afisareEroare(res, 2);
+    } else {
+        res.render("pagini/produse", {
+            produse: rez.rows,
+            optiuni:[]
+        });
+        }
+    })
+});
+
+app.get("/produs/:id", function(req, res){
+    client.query(`select * from prajituri where id=${req.params.id}`, function(err, rez){
+    if (err){
+        console.error("Eroare la interogare", err);
+        afisareEroare(res, 2);
+    } else {
+        if (rez.rowCount == 0) {
+            afisareEroare(res, 404, "Produs inexistent");
+        } else {
+            res.render("pagini/produs", {
+                prod: rez.rows[0],
+            });
+        }
+    }
+    })
 });
 
 app.use("/resurse", function(req, res, next) {
@@ -308,6 +432,8 @@ for (let folder of vect_folder) {
 }
 
 app.use("/resurse", express.static(path.join(__dirname, "resurse")));
+app.use("/dist", express.static(path.join(__dirname, "/node_modules/bootstrap/dist")));
+
 
 app.get("/favicon.ico", function(req, res){
     res.sendFile(path.join(__dirname, "/resurse/imagini/favicon/favicon.ico"));

@@ -1,0 +1,159 @@
+{
+	"cale_galerie":"resurse/imagini/galerie",
+	"imagini": [
+		{
+			"fisier":"vitamina-d3.png",
+			"descriere":"Vitamina D3 (2000 UI)",
+			"alternativ":"Flacon Vitamina D3",
+			"descriere_imag": "Supliment esențial pentru imunitate și sistemul osos în perioadele cu expunere redusă la soare.",
+			"luni":["octombrie","noiembrie","decembrie","ianuarie","februarie","martie"]
+		},
+		{
+			"fisier":"crema-protectie-solara.png",
+			"descriere":"Cremă SPF 50+",
+			"alternativ":"Tub cremă protecție solară",
+			"descriere_imag": "Protecție solară cu spectru larg pentru prevenirea arsurilor și a îmbătrânirii premature a pielii.",
+			"luni":["mai","iunie","iulie","august"]
+		},
+		{
+			"fisier":"sirop-raceala-gripa.png",
+			"descriere":"Sirop tuse și răceală",
+			"alternativ":"Sirop pentru tuse",
+			"descriere_imag": "Formulă calmantă pentru simptomele de răceală și gripă, recomandat în sezonul rece.",
+			"luni":["noiembrie","decembrie","ianuarie","februarie"]
+		},
+		{
+			"fisier":"antihistaminic-alergii.png",
+			"descriere":"Tratament Alergii",
+			"alternativ":"Cutie pastile alergie",
+			"descriere_imag": "Ameliorează simptomele rinitei alergice cauzate de polenul de primăvară.",
+			"luni":["martie","aprilie","mai","iunie"]
+		},
+		{
+			"fisier":"electroliti-hidratare.png",
+			"descriere":"Săruri de rehidratare",
+			"alternativ":"Pliculețe electroliți",
+			"descriere_imag": "Supliment pentru restabilirea echilibrului mineral în perioadele de caniculă sau efort fizic intens.",
+			"luni":["iunie","iulie","august"]
+		},
+		{
+			"fisier":"complex-vitamina-c.png",
+			"descriere":"Vitamina C + Zinc",
+			"alternativ":"Tablete efervescente Vitamina C",
+			"descriere_imag": "Susține sistemul imunitar în perioadele de tranziție și oboseală cronică.",
+			"luni":["septembrie","octombrie","noiembrie","martie","aprilie"]
+		},
+		{
+			"fisier":"spray-nazal-apa-mare.png",
+			"descriere":"Spray nazal izoton",
+			"alternativ":"Spray apă de mare",
+			"descriere_imag": "Curățarea și hidratarea mucoasei nazale, util atât în sezonul rece (aer uscat), cât și în cel al alergiilor.",
+			"luni":["ianuarie","februarie","martie","aprilie", "octombrie","noiembrie","decembrie"]
+		},
+		{
+			"fisier":"pastile-gat.png",
+			"descriere":"Pastile pentru gât",
+			"alternativ":"Cutie pastile gât",
+			"descriere_imag": "Calmează iritațiile și durerile de gât apărute în sezonul rece.",
+			"luni":["noiembrie","decembrie","ianuarie","februarie","martie"]
+		},
+		{
+			"fisier":"picaturi-ochi-alergie.png",
+			"descriere":"Picături oftalmice",
+			"alternativ":"Flacon picături ochi",
+			"descriere_imag": "Hidratează și calmează ochii iritați de polen, praf sau aer condiționat.",
+			"luni":["martie","aprilie","mai","iunie"]
+		},
+		{
+			"fisier":"spray-tantari.png",
+			"descriere":"Spray anti-țânțari",
+			"alternativ":"Tub spray insecte",
+			"descriere_imag": "Protecție eficientă împotriva țânțarilor și căpușelor pentru serile și vacanțele de vară.",
+			"luni":["iunie","iulie","august","septembrie"]
+		},
+		{
+			"fisier":"lotiune-aloe-vera.png",
+			"descriere":"Gel după plajă",
+			"alternativ":"Tub gel aloe vera",
+			"descriere_imag": "Efect răcoritor și calmant pentru refacerea pielii expuse prelungit la soare.",
+			"luni":["iunie","iulie","august"]
+		},
+		{
+			"fisier":"multivitamine-copii.png",
+			"descriere":"Vitamine pentru copii",
+			"alternativ":"Jeleuri cu vitamine",
+			"descriere_imag": "Susțin imunitatea și dezvoltarea armonioasă, ideale la începerea anului școlar și intrarea în colectivitate.",
+			"luni":["septembrie","octombrie","noiembrie"]
+		},
+		{
+			"fisier":"balsam-buze-spf.png",
+			"descriere":"Balsam de buze (SPF/Reparator)",
+			"alternativ":"Stick balsam buze",
+			"descriere_imag": "Protejează buzele de crăpături iarna și de razele UV vara.",
+			"luni":["decembrie","ianuarie","februarie","iunie","iulie","august"]
+		},
+		{
+			"fisier":"plasturi-rezistenti.png",
+			"descriere":"Set plasturi impermeabili",
+			"alternativ":"Cutie plasturi",
+			"descriere_imag": "Indispensabili în trusa de prim ajutor pentru micile accidentări din timpul drumețiilor și vacanțelor.",
+			"luni":["mai","iunie","iulie","august","septembrie"]
+		},
+		{
+			"fisier":"magneziu-b6.png",
+			"descriere":"Magneziu + Vitamina B6",
+			"alternativ":"Cutie capsule Magneziu",
+			"descriere_imag": "Combate astenia de primăvară, stresul și stările de oboseală cronică.",
+			"luni":["martie","aprilie","mai","octombrie","noiembrie"]
+		},
+		{
+			"fisier":"termometru-digital.png",
+			"descriere":"Termometru digital",
+			"alternativ":"Termometru medical",
+			"descriere_imag": "Măsurare rapidă a temperaturii, esențial în trusa medicală pe timpul virozelor.",
+			"luni":["noiembrie","decembrie","ianuarie","februarie","martie"]
+		},
+		{
+			"fisier":"crema-maini-uscate.png",
+			"descriere":"Cremă reparatoare mâini",
+			"alternativ":"Tub cremă mâini",
+			"descriere_imag": "Hidratare intensă pentru pielea uscată și crăpată din cauza frigului și vântului.",
+			"luni":["noiembrie","decembrie","ianuarie","februarie","martie"]
+		},
+		{
+			"fisier":"sirop-echinacea.png",
+			"descriere":"Sirop cu Echinacea",
+			"alternativ":"Sticlă sirop imunitate",
+			"descriere_imag": "Fortifică organismul la schimbările bruște de temperatură specifice tranziției dintre sezoane.",
+			"luni":["septembrie","octombrie","martie","aprilie"]
+		},
+		{
+			"fisier":"ceai-musetel.png",
+			"descriere":"Ceai de mușețel",
+			"alternativ":"Cutie plicuri ceai",
+			"descriere_imag": "Adjuvant natural pentru calmare, hidratare și ameliorarea primelor semne de răceală.",
+			"luni":["octombrie","noiembrie","decembrie","ianuarie","februarie"]
+		},
+		{
+			"fisier":"hepatoprotector.png",
+			"descriere":"Supliment regenerare ficat",
+			"alternativ":"Cutie pastile ficat",
+			"descriere_imag": "Susține funcția hepatică, recomandat în special după mesele grele de sărbători.",
+			"luni":["decembrie","ianuarie","aprilie","mai"]
+		},
+		{
+			"fisier":"gel-muscaturi-insecte.png",
+			"descriere":"Gel calmant mușcături",
+			"alternativ":"Tub gel calmant",
+			"descriere_imag": "Reduce rapid mâncărimea și inflamația cauzate de înțepăturile de insecte.",
+			"luni":["mai","iunie","iulie","august","septembrie"]
+		},
+		{
+			"fisier":"probiotice.png",
+			"descriere":"Probiotice",
+			"alternativ":"Cutie capsule probiotice",
+			"descriere_imag": "Reface flora intestinală, esențial de administrat în timpul tratamentelor cu antibiotice, specifice sezonului rece.",
+			"luni":["noiembrie","decembrie","ianuarie","februarie","martie"]
+		}
+	]
+}

@@ -1,0 +1,74 @@
+// --- Variabile și container (păstrează-le pe ale tale) ---
+@use "galerie_variabile" as *;
+$cale-border: "/resurse/imagini/border.png"; 
+$timp-total: $nr-imagini * 3s; 
+$procent-per-imagine: 100% / $nr-imagini;
+$procent-tranzitie: 5%; 
+
+.galerie-animata-container {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  margin: 2rem auto;
+  overflow: hidden;
+  border: 15px solid transparent;
+  border-image: url($cale-border) 30 round;
+  
+  // Oprim animația la hover pentru figure (întregul cadru)
+  &:hover figure {
+    animation-play-state: paused;
+  }
+}
+
+// --- NOU: Stilizăm elementul <figure> în loc de <img> ---
+.galerie-animata-container figure {
+  position: absolute;
+  margin: 0; // Resetăm marginea implicită de la figure
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  // Aplicăm decupajul pe containerul figure
+  clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+  animation: animatie_galerie $timp-total infinite linear;
+
+  // Imaginea din interior ocupă tot spațiul
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  // Stilizăm banda de text (caption-ul) din partea de jos
+  figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.85); // Fundal alb semi-transparent
+    color: #000;
+    text-align: center;
+    padding: 8px 5px;
+    font-weight: bold;
+    font-family: sans-serif;
+    box-sizing: border-box;
+  }
+}
+
+// --- Cadrele de animație și delay-ul ---
+@keyframes animatie_galerie {
+  0% { clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%); }
+  #{$procent-tranzitie} { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+  #{$procent-per-imagine - $procent-tranzitie} { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+  #{$procent-per-imagine} { clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%); }
+  100% { clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%); }
+}
+
+@for $i from 1 through $nr-imagini {
+  // Aplicăm delay-ul pe fiecare figure în parte
+  .galerie-animata-container figure:nth-child(#{$i}) {
+    animation-delay: ($i - 1) * ($timp-total / $nr-imagini);
+  }
+}

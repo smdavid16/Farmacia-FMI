@@ -1,0 +1,44 @@
+@use '../../node_modules/bootstrap/scss/bootstrap.scss' with (
+
+  // --- Culori de background pentru teme (minim 2 cerute) ---
+  // Am preluat culorile din fișierul tău general.css
+  $primary:       #81DBC4, 
+  $secondary:     #C5DB81, 
+  $success:       #81DB87, 
+  $danger:        #e63946, 
+
+  // Culoarea generală de fundal a paginii
+  $body-bg:       #C9D7CA, 
+
+  // --- Culori de font (litere) ---
+  $body-color:    #1a3a3a, 
+  $link-color:    #1a3a3a, 
+  $link-hover-color: #e74c3c, 
+
+  // --- Familia de font implicită ---
+  $font-family-base: (Arial, sans-serif), 
+
+  // --- Dimensiuni de ecran (Breakpoints) ---
+  $grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 700px,   
+    lg: 1200px,  
+    xl: 1400px,
+    xxl: 1600px
+  ),
+
+  // --- Dimensiunea razelor de border (Border radius) ---
+  $border-radius:     8px,
+  $border-radius-sm:  4px,
+  $border-radius-lg:  12px,
+
+  // --- Dimensiunea literelor pentru heading-uri ---
+  $h1-font-size:  3rem,
+  $h2-font-size:  2rem,
+  $h3-font-size:  1.4rem,
+
+  // --- Variabile extra alese 
+  $border-width:  2px, 
+  $grid-gutter-width: 20px 
+);
